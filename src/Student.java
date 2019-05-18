@@ -1,47 +1,61 @@
 import java.awt.*;
 import java.util.*;
 
-public class Student implements Comparable{
+public class Student implements Comparable {
     private int Sno;
     private String Name;
     private int Score;
-    public Student(int Sno,String Name,int Score){
+
+    public Student(int Sno, String Name, int Score) {
         this.Sno = Sno;
         this.Name = Name;
         this.Score = Score;
 
     }
-    public int tiqu(Student student){
-        char[] a = student.Name.toCharArray();
-        int b = a[0];
-        return b;
+
+
+    @Override
+    public boolean equals(Object obj) {
+        if(!(obj instanceof Student)){
+            return false;
+        }
+        Student student = (Student) obj;
+        if(this.Sno==student.Sno){
+            return true;
+        }
+        else return false;
+
     }
 
     @Override
     public int compareTo(Object o) {
-        // TODO Auto-generated method stub
-        Student student = (Student)o;
+        Student student = (Student) o;
+        int result = this.Score>student.Score?1:(this.Score == student.Score?0:-1);
+        if(result==0){
+            result = this.Name.compareTo(student.Name);
+        }
+        return result;
 
-        return this.Score>student.Score?1:(this.Score==student.Score?(this.tiqu(student)>student.tiqu(student)?1:0):0);
 
     }
-    public static void print(Set<Student> set){
+
+
+    public static void print(Set<Student> set) {
         Iterator<Student> it = set.iterator();
-        while (it.hasNext()){
+        while (it.hasNext()) {
             Student student = it.next();
-            System.out.println(student.Sno+" "+student.Name+" "+student.Score);
+            System.out.println(student.Sno + " " + student.Name + " " + student.Score);
         }
     }
 
     public static void main(String[] args) {
-        Set<Student> set = new TreeSet<>();
-        Student s1 = new Student(001,"Sam",100);
-        Student s2 = new Student(002,"Ader",50);
-        Student s3 = new Student(003,"Stever",66);
-        set.add(s1);
-        set.add(s2);
-        set.add(s3);
+        Set<Student> set = new TreeSet<Student>();
+        set.add(new Student(4, "Sams", 100));
+        set.add(new Student(2, "Ader", 50));
+        set.add(new Student(3, "Stever", 66));
+
         print(set);
     }
+
 
 }
