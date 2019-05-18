@@ -14,18 +14,6 @@ public class Student implements Comparable {
     }
 
 
-    @Override
-    public boolean equals(Object obj) {
-        if(!(obj instanceof Student)){
-            return false;
-        }
-        Student student = (Student) obj;
-        if(this.Sno==student.Sno){
-            return true;
-        }
-        else return false;
-
-    }
 
     @Override
     public int compareTo(Object o) {
@@ -50,7 +38,8 @@ public class Student implements Comparable {
 
     public static void main(String[] args) {
         Set<Student> set = new TreeSet<Student>();
-        set.add(new Student(4, "Sams", 100));
+        set.add(new Student(4, "Szms", 100));
+        set.add(new Student(1, "Ss", 100));
         set.add(new Student(2, "Ader", 50));
         set.add(new Student(3, "Stever", 66));
 
