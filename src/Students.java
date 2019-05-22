@@ -38,6 +38,7 @@ public class Students {
         for(Students students : map.keySet()){
 
             System.out.println(students.Name+" "+students.Age);
+
         }
         Iterator it = map.entrySet().iterator();
         while (it.hasNext()){
